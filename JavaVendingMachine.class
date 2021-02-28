@@ -1,0 +1,90 @@
+ / A drink vending machine with a numeric menu
+
+ 
+
+// constants
+Constant Integer MENU_WATER = 1
+Constant Integer MENU_MILK = 2
+Constant Integer MENU_SODA = 3
+Constant Integer MENU_EXIT = 4
+
+ 
+
+Module main()
+
+ 
+
+        // local variable for menu choice
+        Declare Integer menuChoice = 0
+
+ 
+
+        // show welcome message and menu, then get user's choice
+        Display "Welcome to XYZ Beverages!"
+        Call showMenu()
+        Display "Enter your choice: "
+        Input menuChoice
+
+ 
+
+        // validate input; if invalid, show error message
+        If menuChoice < 1 OR menuChoice > 4 Then
+                Display "Sorry, that choice is invalid."
+        Else
+                If menuChoice == MENU_EXIT Then
+                        Display "You have chosen to exit without a purchase; goodbye!"
+                Else
+                        Call dispenseDrink(menuChoice)
+                End If
+       End If
+
+ 
+
+End Module
+
+ 
+
+// show the menu to the user
+Module showMenu()
+
+ 
+
+        Display "Please select an option from the following drinks:"
+        Display "1)    Water"
+        Display "2)    Milk"
+        Display "3)    Soda"
+        Display "4)    [Exit]"
+
+ 
+
+End Module
+
+ 
+
+// dispense drink based on choice parameter
+Module dispenseDrink(Integer choice)
+
+ 
+
+        // strChoice will contain output based on choice
+        Declare String strChoice = "Invalid drink choice, no item dispensed."
+
+ 
+
+        Select choice
+                  Case MENU_WATER:
+                                 Set strChoice = "You have selected Water, this item will now be dispensed."
+                  Case MENU_MILK :
+                                 Set strChoice = "You have selected Milk, this item will now be dispensed."
+                  Case MENU_SODA:
+                                 Set strChoice = "You have selected Soda, this item will now be dispensed."
+        End Select
+
+ 
+
+        // show results
+        Display strChoice
+
+ 
+
+End Module
